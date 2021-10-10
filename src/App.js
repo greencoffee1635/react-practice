@@ -1,23 +1,16 @@
-import React from "react";
-import Student from "./components/Student";
+import React, { useState } from "react";
 
 function App() {
-    const student1 = {
-        name: "김똘똘",
-        subject: "수학",
-        score: 87,
-    };
-    const student2 = {
-        name: "박뚤뚤",
-        subject: "영어",
-        score: 76,
-    };
-    return (
-        <div className="App">
-            <Student student={student1} />
-            <Student student={student2} />
-        </div>
-    );
+  const [count, setCount] = useState(0);
+  return (
+    <div className="App">
+      <span>{count}회 클릭하였습니다.</span>
+      <button onClick={() => {
+          setCount(count + 1);
+          }}>클릭</button>
+    </div>
+      
+  );
 }
 
 export default App;
