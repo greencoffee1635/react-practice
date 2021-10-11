@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Greeting = () => {
-  const handleClick = () => {
-    alert("안녕하세요.");
-  };
-  return <button onClick={handleClick}>클릭</button>;
+  useEffect(() => {
+    console.log("컴포넌트가 생성되었습니다.");
+    return () => {
+      console.log("컴포넌트가 소멸되었습니다.");
+    };
+  }, []);
+
+  return (
+    <div>
+      <h1>안녕하세요.</h1>
+    </div>
+  );
 };
 
 export default Greeting;
