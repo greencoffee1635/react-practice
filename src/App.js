@@ -1,27 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import MyForm from "./components/MyForm";
 
 function App() {
-  const [person, setPerson] = useState({
-    name: "김오이",
-    drink: "HENDRICK'S"
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPerson((current) => {
-      const newPerson = {...current};
-      newPerson[name] = value;
-      return newPerson;
-    })
-  }
+  const [username, setUsername] = useState("");
   return (
-    <div>
-      <input name="name" value={person.name} onChange={handleChange} />
-      <input name="drink" value={person.drink} onChange={handleChange} />
-      <button onClick={() => {
-        alert(`${person.name}님은 ${person.drink}를 마십니다.`)
-      }}>클릭</button>
+    <div className="App">
+      <h1>{username}님 환영합니다.</h1>
+      <MyForm onChange={e => {
+          setUsername(e.target.value);
+        }}  />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
