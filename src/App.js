@@ -1,12 +1,13 @@
-import React from "react";
-import Greeting from "./components/Greeting";
+import React, { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <Greeting />
-    </div>
-  );
+  const [inputValue, setInputValue] = useState("");
+  return <div className="App">
+    <input onChange={(event)=>{
+      setInputValue(event.target.value)
+    }} />
+    <span>{inputValue}</span>
+  </div>;
 }
 
 export default App;
