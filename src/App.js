@@ -1,11 +1,10 @@
 import React from "react";
+import Greeting from "./components/Greeting";
 
 function App() {
   return (
     <div className="App">
-      <input onChange={(event)=>{
-          console.log(event.target.value);
-      }} />
+      <Greeting />
     </div>
   );
 }
