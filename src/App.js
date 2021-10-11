@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 
-function App()  {
-  const [count, setCount] = useState(0);
+function App() {
+  const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => { 
-      console.log(count);
-  }, [count]);
-  
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue])
+
   return (
-  <button onClick={() => {
-      setCount(current => {
-          return current + 1;
-      });
-  }}>카운트 증가</button>);
+    <div className="App">
+      <input value={inputValue} onChange={(e) => {
+        setInputValue(e.target.value);
+      }} />
+    </div>
+  );
 }
+
+// Effect Hook 사용 형태
+// const App = () => {
+//   useEffect(EffectCallback, Deps);
+// }
 
 export default App;
