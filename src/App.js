@@ -1,12 +1,11 @@
 import React from "react";
 
 function App() {
-  const handleChange = event => {
-    console.log(event.target.value);
-  };
   return (
     <div className="App">
-      <input onChange={handleChange} />
+      <input onChange={(event)=>{
+          console.log(event.target.value);
+      }} />
     </div>
   );
 }
