@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
-import Greeting from "./components/Greeting"
+import React from "react";
 
 function App() {
-    const [username, setUsername] = useState("");
-    
-    return <div>
-        <input value={username} onChange={(event) => {
-        setUsername(event.target.value);}} />
-        <Greeting username={username} />
+  const handleChange = event => {
+    console.log(event.target.value);
+  };
+  return (
+    <div className="App">
+      <input onChange={handleChange} />
     </div>
+  );
 }
 
-export default App
+export default App;
