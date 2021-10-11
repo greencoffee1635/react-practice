@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import MyForm from "./components/MyForm";
+import React, { useState, useEffect } from "react";
 
-function App() {
-  const [username, setUsername] = useState("");
+function App()  {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => { 
+      console.log(count);
+  }, [count]);
+  
   return (
-    <div className="App">
-      <h1>{username}님 환영합니다.</h1>
-      <MyForm onChange={e => {
-          setUsername(e.target.value);
-        }}  />
-    </div>
-  );
+  <button onClick={() => {
+      setCount(current => {
+          return current + 1;
+      });
+  }}>카운트 증가</button>);
 }
 
 export default App;
