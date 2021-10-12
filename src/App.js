@@ -1,16 +1,17 @@
-import React, { useRef } from "react";
+import React from "react";
+import useToggle from "./hooks/useToggle";
 
 function App() {
-  const inputRef = useRef();
-
+  const { isOn, toggle } = useToggle(false);
   return (
     <div>
-      <input ref={inputRef} />
       <button onClick={() => {
-        alert(inputRef.current.value)
-      }}>클릭</button>
+          toggle();
+        }}>
+        {isOn ? "켜짐" : "꺼짐"}
+      </button>
     </div>
-  )
+  );
 }
 
 export default App;
