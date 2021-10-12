@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import Greeting from "./components/Greeting";
+import React, { useState, useMemo } from "react";
 
 function App() {
-  const [isCreated, setIsCreated] = useState(false);
+  const [foo, setFoo] = useState(0);
+  const [bar, setBar] = useState(0);
+  const multi = useMemo(() => {
+    return foo * bar;
+  }, [foo, bar]);
   return (
     <div>
-      <button onClick={() => {
-          setIsCreated(current => {
-            return !current;
-            // !는 not, 반전해서 return
-          });
-        }}>컴포넌트 생성/제거</button>
-      {isCreated && <Greeting />}
-      {/* isCreated가 true면, <Greeting />을 실행 (boolean)
-      isCreated가 false면, 뒤로 넘어가지 않는다. */}
+      <input value={foo} onChange={(event) => {
+        setFoo(parseInt(event.target.value));
+      }} />
+      <input value={bar} onChange={(event) => {
+        setBar(parseInt(event.target.value));
+      }} />
+      <div>{multi}</div>
     </div>
   );
 }
