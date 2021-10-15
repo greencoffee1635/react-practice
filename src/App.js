@@ -4,22 +4,42 @@ import ListView from "./components/ListView";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-
-  const handleInsert = value => {
-    setTodoList(current => {
-      const newTodoList = [...current];
-      newTodoList.push({
-        key: new Date().getTime(), // JSX에서 Array의 값을 표현할 때 각 요소를 구분하기 위한 값
-        value: value, // onInsert로부터 전달받은 값,
-        isCompleted: false, // 완료 처리를 위한 flag
+  
+  const handleInsert = (value) => {
+    setTodoList((current) => {
+      const newList = [...current];
+      newList.push({
+        key: new Date().getTime(),
+        value,
+        isCompleted: false,
       });
-      return newTodoList;
+      return newList;
+    })
+  }
+  
+  const handleComplete = (index) => {
+    setTodoList((current) => {
+      const newList = [...current];
+      newList[index].isCompleted = true;
+      return newList;
     });
-  };
+  }
+  
+  const handleRemove = (index) => {
+    setTodoList((current) => {
+      const newList = [...current];
+      newList.splice(index, 1); // 2를 넣으면 두개가 삭제되어버림
+      //index위치 - Array의 메소드니까
+      return newList;
+    });
+  }
+  
   return (
     <div className="App">
-      <ListView todoList={todoList} />
-      <InsertForm onInsert={handleInsert} />
+        <ListView todoList={todoList}
+          onComplete={handleComplete}
+          onRemove={handleRemove} />
+        <InsertForm onInsert={handleInsert} />
     </div>
   );
 }
