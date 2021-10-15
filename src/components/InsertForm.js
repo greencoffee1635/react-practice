@@ -4,7 +4,9 @@ const InsertForm = ({ onInsert }) => {
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
+    // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
     if(typeof onInsert === "function") {
+      // onInsert가 정상적인 함수인 지 확인하여 에러 방지
       onInsert(inputValue);
     }
     setInputValue("");
